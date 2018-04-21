@@ -1,0 +1,31 @@
+html, body{
+	height: 100%;
+}
+#container{
+
+	width: 500px;
+	height: 530px;
+	margin: 0 auto;
+}
+.square{
+	border:2px solid black;
+	display: inline-block;
+	width: 161px;
+	height: 166px;
+	margin:0;
+}
+
+.top{
+	border-top: none;
+}
+
+.left{
+	border-left: none;
+}
+.bottom{
+	border-bottom: none;
+}
+
+.right{
+	border-right: none;
+}
