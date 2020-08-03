@@ -1,28 +1,70 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Tic Tac Toe!</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript" src="tictactoe.js"></script>
-	<link rel="stylesheet" type="text/css" href="tictactoe.css">
-	
-</head>
-<body>
-	<div id="container">
-	<div id="top-left" class="square top left" >
-	
-	</div>
-	<div id="top-center" class="square top"></div>
-	<div id="top-right" class="square top right"></div>
-	<div id="middle-left" class="square left"></div>
-	<div id="middle-center" class="square"></div>
-	<div id="middle-right" class="square right"></div>
-	<div id="bottom-left" class="square left bottom"></div>
-	<div id="bottom-center" class="square bottom"></div>
-	<div id="bottom-rigth" class="square bottom right"></div>
-	</div>
-	
+  <head>
+    <title>TicTacToe Game</title>
+    <link rel="stylesheet" type"text/css" href="tictactoe.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+  </head>
+  <body>
+    <div id="display">
+      <div id="header">
+        <h1>TicTacToe</h1>
+        <div id="winnerDisplay">
+          <h2 id="winner"></h2>
+          <button class="button" id="restartButton">Restart</button>
+        </div>
+      </div>
 
+      <div id="gameArea">
+        <div class="tiles top left" id="0"></div>
+        <div class="tiles top" id="1"></div>
+        <div class="tiles top right" id="2"></div>
+        <div class="tiles left" id="3"></div>
+        <div class="tiles" id="4"></div>
+        <div class="tiles right" id="5"></div>
+        <div class="tiles bottom left" id="6"></div>
+        <div class="tiles bottom" id="7"></div>
+        <div class="tiles bottom right" id="8"></div>
+      </div>
 
-</body>
+      <div id="modeSelection">
+        <h1>Select a mode</h1>
+        <button class="button" id="playerVsPlayer">
+          <span>Player</span><span>vs</span><span>Player</span>
+        </button>
+        <!-- <div class="modeSelections"><span>Human vs CPU</span></div> -->
+      </div>
+
+      <div id="playerInput">
+        <h1>Players Names</h1>
+        <div class="inputs">
+          <label for="name" id="name-label">Player 1:</label>
+          <input
+            id="playerOneName"
+            type="text"
+            name="player"
+            placeholder="Player 1 name"
+            required
+          />
+        </div>
+
+        <div class="inputs">
+          <label for="name" id="name-label">Player 2:</label>
+          <input
+            id="playerTwoName"
+            type="text"
+            name="player1"
+            placeholder="Payer 2 name"
+            required
+          />
+        </div>
+
+        <div id="startGame">
+          <button class="button" id="startGameButton">Start Game!</button>
+          <!--  -->
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="tictactoe.js"></script>
 </html>
