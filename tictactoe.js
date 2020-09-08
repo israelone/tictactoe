@@ -1,5 +1,4 @@
-
-
+//Sets up gameboard
 const Gameboard = () => {
   const buttons = Array.from(document.getElementsByClassName("button"));
   const playerInput = document.getElementById("playerInput");
@@ -28,12 +27,14 @@ const Gameboard = () => {
     });
   });
 
+  //Player contructor receives information from input 
   const Player = (playerName, selection) => {
     const name = playerName;
     const tile = selection;
     return { tile, name };
   };
 
+  //Adds listerners to tiles
   const gameFlow = () => {
     tiles.forEach(function (elem) {
       elem.addEventListener("click", function () {
@@ -42,6 +43,7 @@ const Gameboard = () => {
     });
   };
 
+  //Starts game if it has received name input from players
   const startGame = () => {
     if (playerOneName.value === "" || playerTwoName.value === "") {
       alert("Please enter your names");
@@ -52,6 +54,7 @@ const Gameboard = () => {
     }
   };
 
+  //Creates player calling Player constructor
   const createPlayers = () => {
     playerOne = Player(playerOneName.value, "X");
     playerTwo = Player(playerTwoName.value, "O");
@@ -61,6 +64,7 @@ const Gameboard = () => {
     gameFlow(playerOne, playerTwo);
   };
 
+  //Checks for winner by going over the gameboard and check for all possible ways to win
   const checkForWinner = (tile) => {
     if (
       (gameArea[0] == tile && gameArea[1] == tile && gameArea[2] == tile) ||
@@ -71,15 +75,18 @@ const Gameboard = () => {
       (gameArea[2] == tile && gameArea[5] == tile && gameArea[8] == tile) ||
       (gameArea[0] == tile && gameArea[4] == tile && gameArea[8] == tile) ||
       (gameArea[2] == tile && gameArea[4] == tile && gameArea[6] == tile)
-    ) {
+      ){
+      selectWinner(playerTurn.name);
+      }
+     
+    else{
       if (currentTurn === 9 && winner == "") {
         selectWinner("Its a Draw");
-      } else {
-        selectWinner(playerTurn.name);
       }
     }
   };
 
+  //Logs player tile selection, keeping track of them in an array and keeping track of current turn
   const logPlayerSelection = (areaSelection) => {
     if (areaSelection.innerText === "" && winner === "") {
       areaSelection.innerText = playerTurn.tile;
@@ -109,20 +116,22 @@ const Gameboard = () => {
     selectMode();
   };
 
+  //Currently only player vs player mode is available
   const selectMode = () => {
     document.getElementById("gameArea").style.display = "none";
     document.getElementById("winnerDisplay").style.display = "none";
     document.getElementById("modeSelection").style.display = "block";
   };
 
+
   const selectWinner = (result) => {
     winner = result;
     document.getElementById("winner").innerText = winner + " Wins ";
     document.getElementById("winnerDisplay").style.display = "block";
     removeHandler();
-    console.log(winner + " " + "Wins");
   };
-
+  
+  //Removes even listener to prevent players from continue selecting tiles after end of game
   const removeHandler = () => {
     tiles.forEach(function (elem) {
       elem.removeEventListener("click", logPlayerSelection);
@@ -134,5 +143,3 @@ const Gameboard = () => {
 
 const tictactoe = Gameboard();
 tictactoe.selectMode();
-
-
